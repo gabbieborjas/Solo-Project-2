@@ -1,4 +1,3 @@
-// REPLACE THIS with your Render URL (it will look like https://app-name.onrender.com)
 const API_URL = "https://solo-project-2-v9lh.onrender.com"; 
 
 let allWorkouts = [];
