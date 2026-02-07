@@ -1,27 +1,74 @@
-<nav>
-    <h1>Fitness Tracker</h1> <div class="nav-links">
-        <button onclick="showSection('list-view')">My Workouts</button>
-        <button onclick="showSection('form-view')">Add New</button>
-        <button onclick="showSection('stats-view')">Dashboard</button>
-    </div>
-</nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <h1>Fitness Tracker</h1>
+        <div class="nav-links">
+            <button onclick="showSection('list-view')">My Workouts</button>
+            <button onclick="showSection('form-view')">Add New</button>
+            <button onclick="showSection('stats-view')">Dashboard</button>
+        </div>
+    </nav>
 
-<main id="app-container">
-    <section id="list-view">
-        <h2>Exercise Logs</h2>
-        <div id="grid" class="grid"></div>
+    <main id="app-container">
+        
+        <section id="list-view">
+            <h2>Workout Logs</h2>
+            <div id="grid" class="grid"></div>
+            
+            <div class="pagination-container">
+                <button id="prev-btn" onclick="changePage(-1)">Previous</button>
+                <span id="page-info">Page 1 of 3</span>
+                <button id="next-btn" onclick="changePage(1)">Next</button>
+            </div>
         </section>
 
-    <section id="stats-view" class="hidden">
-        <h2>My Progress</h2> <div class="stats-cards">
-            <div class="card">
-                <h3>Total Sessions</h3>
-                <span id="stat-total">0</span>
+        <section id="form-view" class="hidden">
+            <h2 id="form-title">Log New Session</h2>
+            <form id="workout-form">
+                <input type="hidden" id="edit-id">
+                <div class="field">
+                    <label>Exercise Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="field">
+                    <label>Category</label>
+                    <select id="category">
+                        <option value="Barre">Barre</option>
+                        <option value="Cardio">Cardio</option>
+                        <option value="Strength">Strength</option>
+                        <option value="Flexibility">Flexibility</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Duration (mins)</label>
+                    <input type="number" id="duration" required>
+                </div>
+                <button type="submit" id="save-btn">Save Workout</button>
+            </form>
+        </section>
+
+        <section id="stats-view" class="hidden">
+            <h2>Progress Stats</h2>
+            <div class="stats-cards">
+                <div class="card">
+                    <h3>Total Sessions</h3>
+                    <span id="stat-total">0</span>
+                </div>
+                <div class="card">
+                    <h3>Total Minutes</h3>
+                    <span id="stat-minutes">0</span>
+                </div>
             </div>
-            <div class="card">
-                <h3>Total Minutes</h3>
-                <span id="stat-minutes">0</span>
-            </div>
-        </div>
-    </section>
-</main>
+        </section>
+
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>
