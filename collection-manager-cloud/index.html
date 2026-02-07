@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Fitness Manager | Solo Project 2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <h1>Cloud Fitness</h1>
+        <div class="nav-links">
+            <button onclick="showSection('list-view')">View All</button>
+            <button onclick="showSection('form-view')">Add Exercise</button>
+            <button onclick="showSection('stats-view')">Stats Dashboard</button>
+        </div>
+    </nav>
+
+    <main id="app-container">
+        
+        <section id="list-view">
+            <h2>Exercise Logs</h2>
+            <div id="grid" class="grid"></div>
+            
+            <div class="pagination-container">
+                <button id="prev-btn" onclick="changePage(-1)">← Previous</button>
+                <span id="page-info">Page 1 of 3</span>
+                <button id="next-btn" onclick="changePage(1)">Next →</button>
+            </div>
+        </section>
+
+        <section id="form-view" class="hidden">
+            <h2 id="form-title">Log New Exercise</h2>
+            <form id="workout-form">
+                <input type="hidden" id="edit-id">
+                
+                <div class="field">
+                    <label for="name">Exercise Name</label>
+                    <input type="text" id="name" placeholder="e.g. Barre Plies" required>
+                </div>
+
+                <div class="field">
+                    <label for="category">Category</label>
+                    <select id="category">
+                        <option value="Barre">Barre</option>
+                        <option value="Cardio">Cardio</option>
+                        <option value="Strength">Strength</option>
+                        <option value="Flexibility">Flexibility</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="duration">Duration (mins)</label>
+                    <input type="number" id="duration" min="1" placeholder="e.g. 30" required>
+                </div>
+
+                <button type="submit" id="save-btn">Save to Cloud</button>
+            </form>
+        </section>
+
+        <section id="stats-view" class="hidden">
+            <h2>Cloud Dashboard</h2>
+            <div class="stats-cards">
+                <div class="card">
+                    <h3>Total Records</h3>
+                    <span id="stat-total">0</span>
+                </div>
+                <div class="card">
+                    <h3>Total Minutes</h3>
+                    <span id="stat-minutes">0</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
