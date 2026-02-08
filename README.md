@@ -1,32 +1,33 @@
 # Solo-Project-2
 
-# Workout Tracker - Solo Project 2
+# Fitness Tracker - Solo Project 2
 
-A vibrant, mobile-responsive web application for logging and managing exercise sessions. This project demonstrates cloud deployment, data persistence via JSON, and advanced UI features like pagination and data visualization.
+A vibrant, full-stack workout management system designed for high visibility and ease of use. This project features a decoupled architecture with a frontend hosted on Netlify and a Python-based REST API hosted on Render.
 
 ## Live Deployment
-**Netlify URL:** https://melodic-kataifi-464e96.netlify.app/
+* **Frontend (Netlify):** https://melodic-kataifi-464e96.netlify.app/
+* **Backend API (Render):** https://solo-project-2-v9lh.onrender.com/workouts
 
 ---
 
-## Project Details
+## Technology Stack
 
-### 1. Backend Architecture & Language
-* **Language:** JavaScript (ES6+)
-* **Architecture:** This project utilizes an **Asynchronous Fetch Architecture**. 
-* **Why JavaScript?** While initially designed for a Python/Flask environment, the application was optimized for **Netlify's static hosting environment** using JavaScript's native `fetch` API. This ensures zero-latency performance and high reliability for the end user while maintaining a clean "Client/Server" data flow.
+### 1. Backend Language & Framework
+* **Language:** Python 3.13
+* **Framework:** Flask
+* **Deployment:** Render.com
+* **Key Feature:** The backend utilizes `Flask-CORS` to securely communicate with the Netlify frontend, enabling cross-origin data requests.
 
 ### 2. Explanation of JSON Persistence
-Data persistence is a core requirement of this project. The application achieves this through the following process:
-* **Initial State:** The app bootstraps itself by fetching a `data.json` file containing 30 starter records. This represents the "Cloud Database."
-* **State Management:** Once loaded, the application maintains the current state of the collection in the browser's memory. 
-* **CRUD Persistence:** When a user **adds, edits, or deletes** a workout, the JavaScript logic updates the internal collection and re-renders the UI immediately. 
-* **Visual Continuity:** Because the data is loaded from an external JSON file rather than being hard-coded in the HTML, the "Collection" remains consistent and scalable.
+Data persistence is handled through a server-side JSON strategy:
+* **Data Source:** The backend maintains a `data.json` file which acts as the primary data store.
+* **The Process:** When a user interacts with the app, the JavaScript frontend sends an asynchronous `fetch` request to the Python API. 
+* **Persistence Logic:** The Python backend reads from `data.json` to serve the initial 30 records. When a user creates, updates, or deletes a workout, the Python logic modifies the data array and overwrites the `data.json` file on the server.
+* **Reliability:** This ensures that even if the user refreshes their browser or accesses the site from a different device, the workout logs remain exactly as they left them.
 
-### 3. Key Features
-* **Paging:** The "My Workouts" view is limited to exactly **10 records per page**. Users can navigate through 3+ pages of data using the large "Next" and "Previous" buttons.
-* **Dynamic Stats:** The Dashboard automatically calculates the **Total Sessions** and **Total Workout Minutes** across the entire dataset.
-* **Vibrant UI:** Custom CSS was designed with high-contrast colors (Teal and Coral) and large touch-friendly buttons to ensure a great mobile and desktop experience.
-* **Full CRUD:** Users can Create, Read, Update, and Delete exercise logs with a confirmation dialog for safety.
+### 3. Key UI Features
+* **Vibrant Design:** Custom "Teal and Coral" theme with large, touch-friendly buttons and high-contrast typography.
+* **Paging (Requirement 5):** The application logic restricts the display to exactly **10 records per page**, automatically calculating the necessary pages (e.g., 3 pages for the initial 30 records).
+* **Dashboard (Requirement 4):** A dedicated stats view that aggregates the total number of sessions and cumulative workout minutes across the entire cloud database.
 
 ---
