@@ -1,4 +1,4 @@
-const API_URL = "https://solo-project-2-v9lh.onrender.com"; 
+const API_URL = "https://solo-project-2-v9lh.onrender.com/workouts"; 
 
 let allWorkouts = [];
 let currentPage = 1;
